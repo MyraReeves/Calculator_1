@@ -76,3 +76,40 @@ function Calculator_Reset() {
 }
 
 
+// Display results on the screen:
+function Update_Display() {
+    const display = document.querySelector('.screen');
+    display.value = Calculator.Display_Value;
+}
+
+
+Update_Display();
+const keys = document.querySelector('.keys');
+keys.addEventListener('click', (event) => {
+    // The "target" object variable represnts the element that was clicked on:
+    const { target } = event;
+    if (target.classList.contains('operator')) {
+        Handle_Operator(target.value);
+        Update_Display();
+        return;
+    }
+    if (target.classList.contains('decimal')) {
+        Input_Decimal(target.value);
+        Update_Display();
+        return;
+    }
+    if (target.classList.contains('all-clear')) {
+        Calculator_Reset();
+        Update_Display();
+        return;
+    }
+
+    // In case the element that was clicked on wasn't a button:
+    if (!target.matches('button')){
+        return;
+    }
+
+
+    Input_Digit(target.value);
+    Update_Display();
+})
