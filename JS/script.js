@@ -66,3 +66,13 @@ function Handle_Operator(Next_Operator) {
     Calculator.operator = Next_Operator;
 }
 
+
+// Enable the "Clear" button to reset the screen:
+function Calculator_Reset() {
+    Calculator.Display_Value = '0';
+    Calculator.First_Operand = null;
+    Calculator.Wait_Second_Operand = false;
+    Calculator.operator = null;
+}
+
+
